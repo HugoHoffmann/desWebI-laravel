@@ -19,20 +19,20 @@
         </tr>
         @foreach ($clientes as $cliente)
             <tr>
-                <td>{{ $cliente->IDCliente }}</td>
-                <td>{{ $cliente->NomeCompanhia }}</td>
-                <td>{{ $cliente->NomeContato }}</td>
-                <td>{{ $cliente->TituloContato }}</td>
-                <td>{{ $cliente->Endereco }}</td>
-                <td>{{ $cliente->Cidade }}</td>
-                <td>{{ $cliente->Regiao }}</td>
-                <td>{{ $cliente->CEP }}</td>
-                <td>{{ $cliente->Pais }}</td>
-                <td>{{ $cliente->Telefone }}</td>
-                <td>{{ $cliente->Fax }}</td>
+                <td>{{ $cliente->customer_id }}</td>
+                <td>{{ $cliente->company_name }}</td>
+                <td>{{ $cliente->contact_name }}</td>
+                <td>{{ $cliente->contact_title }}</td>
+                <td>{{ $cliente->address }}</td>
+                <td>{{ $cliente->city }}</td>
+                <td>{{ $cliente->region }}</td>
+                <td>{{ $cliente->postal_code }}</td>
+                <td>{{ $cliente->country }}</td>
+                <td>{{ $cliente->phone }}</td>
+                <td>{{ $cliente->fax }}</td>
             <td>
-                <a href="{{ route('cliente.altera', $cliente->IDCliente) }}">Altera</a>
-                <form action="{{route('cliente.exclui', $cliente->IDCliente)}}" method="post">
+                <a href="{{ route('cliente.altera', $cliente->customer_id ) }}">Altera</a>
+                <form action="{{route('cliente.exclui', $cliente->customer_id )}}" method="post">
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger" type="submit">Exluir</button>

@@ -1,0 +1,49 @@
+version: '3.3'
+
+services:
+  nginx:
+    container_name: deswebii-nginx
+    image: nginx
+    restart: always
+    volumes:
+      - "./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf"
+      - "./projeto:/var/www/html"
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+      - postgresql
+    networks: 
+      - deswebii-network
+
+  php:
+    container_name: deswebii-php
+    build: ./docker/php
+    image: luizmoratelli/deswebii-php
+    restart: always
+    depends_on:
+      - postgresql
+    volumes:
+      - "./projeto:/var/www/html"
+    networks: 
+      - deswebii-network
+  
+  postgresql:
+    container_name: deswebii-postgresql
+    build: ./docker/postgresql
+    image: luizmoratelli/deswebii-postgresql
+    environment:
+      - POSTGRES_DB=deswebii
+      - POSTGRES_USER=postgres
+      - TZ=GMT
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    networks: 
+      - deswebii-network
+
+volumes:
+  postgresql-data:
+
+networks: 
+  deswebii-network:
+    driver: bridge

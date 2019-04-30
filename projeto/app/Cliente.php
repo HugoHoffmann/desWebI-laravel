@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    protected $table = 'clientes';
-    protected $fillable = [ 
-        'NomeCompanhia', 
-        'NomeContato',
-        'TituloContato',
-        'Endereco',
-        'Cidade',
-        'Regiao',
-        'CEP',
-        'Pais',
-        'Telefone',
-        'Fax'
+    protected $table = 'customers';
+    protected $fillable = [
+        'company_name',
+        'contact_name',
+        'contact_title',
+        'address',
+        'city',
+        'region',
+        'postal_code',
+        'country',
+        'phone',
+        'fax',
     ];
 }
