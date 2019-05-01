@@ -18,7 +18,7 @@ Route::patch('/cliente/{id}/alterar', 'ClienteController@atualizar')->name('clie
 Route::delete('/cliente/{id}/excluir', 'ClienteController@excluir')->name('cliente.excluir');
 
 /**
- * Categorias
+ * Category
  */
 Route::get('/categorias', 'CategoriaController@listar')->name('categoria.listar');
 
@@ -29,3 +29,16 @@ Route::get('/categoria/{id}/alterar', 'CategoriaController@alterar')->name('cate
 Route::patch('/categoria/{id}/alterar', 'CategoriaController@atualizar')->name('categoria.atualizar');
 
 Route::delete('/categoria/{id}/excluir', 'CategoriaController@excluir')->name('categoria.excluir');
+
+/**
+ * Product
+ */
+Route::get('/produtos', 'ProdutoController@listar')->name('produto.listar');
+
+Route::get('/produto/incluir', 'ProdutoController@incluir')->name('produto.incluir');
+Route::post('/produto/salvar', 'ProdutoController@salvar')->name('produto.salvar');
+
+Route::get('/produto/{id}/alterar', 'ProdutoController@alterar')->name('produto.alterar');
+Route::patch('/produto/{id}/alterar', 'ProdutoController@atualizar')->name('produto.atualizar');
+
+Route::delete('/produto/{id}/excluir', 'ProdutoController@excluir')->name('produto.excluir');
