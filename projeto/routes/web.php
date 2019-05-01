@@ -23,7 +23,7 @@ Route::delete('/cliente/{id}/excluir', 'ClienteController@excluir')->name('clien
 Route::get('/categorias', 'CategoriaController@listar')->name('categoria.listar');
 
 Route::get('/categoria/incluir', 'CategoriaController@incluir')->name('categoria.incluir');
-Route::get('/categoria/salvar', 'CategoriaController@salvar')->name('categoria.salvar');
+Route::post('/categoria/salvar', 'CategoriaController@salvar')->name('categoria.salvar');
 
 Route::get('/categoria/{id}/alterar', 'CategoriaController@alterar')->name('categoria.alterar');
 Route::patch('/categoria/{id}/alterar', 'CategoriaController@atualizar')->name('categoria.atualizar');

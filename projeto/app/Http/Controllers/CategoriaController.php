@@ -10,7 +10,7 @@ class CategoriaController extends Controller
 
     public function listar(){
         $categorias = Categoria::all();
-
+        //dd($categorias);
         return view('categoria.listar', compact('categorias'));        
     }
 
@@ -19,10 +19,6 @@ class CategoriaController extends Controller
     }
 
     public function salvar(Request $request){
-        if(Categoria::find($request->get('category_id'))){
-            return redirect()->route('categoria.listar')->with('message', 'Já existe uma categoria com esse ID!');
-        }
-
         $categoria = new Categoria($request->all());
         $categoria->save();
 
@@ -39,13 +35,14 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
 
         $categoria->category_name = $request->get('category_name');
+        $categoria->description = $request->get('description');
         $categoria->save();
 
         return redirect()->route('categoria.listar')->with('message', 'Categoria atualizada com sucesso!');
     }
 
     public function excluir($id){
-        if (Produto::where('category_id', '=', $id)->count()) {
+        if (Produto::where('product_id', '=', $id)->count()) {
             return redirect()->route('categoria.listar')->with('message', 'É necessário excluir os produtos dessa categoria antes de excluí-la!');
         }
 
