@@ -2,6 +2,9 @@
 
 @section('conteudo')
 
+    <div class="col-12 mb-3">
+        <a href="{{ route('cliente.incluir') }}" class="btn btn-primary">Incluir</a>
+    </div>
     <table class="table table-hover ">
         <tr>
             <th>ID Clientes</th>
@@ -31,11 +34,11 @@
                 <td>{{ $cliente->phone }}</td>
                 <td>{{ $cliente->fax }}</td>
             <td>
-                <a href="{{ route('cliente.altera', $cliente->customer_id ) }}">Altera</a>
-                <form action="{{route('cliente.exclui', $cliente->customer_id )}}" method="post">
+                <a class="btn btn-primary" href="{{ route('cliente.alterar', $cliente->customer_id) }}">Alterar</a>
+                <form action="{{ route('cliente.excluir', $cliente->customer_id) }}" method="post">
                     @csrf
-                    @method('delete')
-                    <button class="btn btn-danger" type="submit">Exluir</button>
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Excluir</button>
                 </form>
             </td>
                 

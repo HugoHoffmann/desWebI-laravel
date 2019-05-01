@@ -31,9 +31,7 @@
 
     <section class="container">
         <div class="row">
-            <div class="col-md-4">
-                @yield('conteudo')  
-            </div>
+            @yield('conteudo')  
         </div>
     </section>
     

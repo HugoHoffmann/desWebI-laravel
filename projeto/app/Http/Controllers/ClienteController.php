@@ -7,20 +7,44 @@ use projeto\{Cliente};
 
 class ClienteController extends Controller
 {
-    
-
-    public function index() {
+    public function listar() {
         $clientes = Cliente::all();
-        //dd($clientes);
-        return view('cliente.index', compact('clientes'));
+
+        return view('cliente.listar', compact('clientes'));
     }
 
-    public function altera($id){
-        return view('cliente.altera');
+    public function incluir() {
+        return view('cliente.incluir');
     }
 
-    public function exclui($id){
-        
+    public function salvar(Request $request) {
+        $cliente = new Cliente($request->all());
+        $cliente->save();
+
+        return redirect()->route('cliente.listar');
+    }
+
+    public function alterar($id){
+        $cliente = Cliente::find($id);
+
+        return view('cliente.alterar', compact('cliente'));
+    }
+
+    public function atualizar(Request $request, $id) {
+        $cliente = Cliente::find($id);
+
+        $cliente->customer_id = $request->get('customer_id');
+        $cliente->company_name = $request->get('company_name');
+        $cliente->save();
+
+        return redirect()->route('cliente.listar');
+    }
+
+    public function excluir($id){
+        $cliente = Cliente::find($id);
+        $cliente->delete();
+
+        return redirect()->route('cliente.listar');
     }
 
 }
