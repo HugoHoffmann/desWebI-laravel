@@ -3,7 +3,7 @@
 namespace projeto\Http\Controllers;
 
 use Illuminate\Http\Request;
-use projeto\{Cliente};
+use projeto\{Cliente, Ordem};
 
 class ClienteController extends Controller
 {
@@ -45,10 +45,9 @@ class ClienteController extends Controller
     }
 
     public function excluir($id){
-        //@TODO implementar verificar de se existe alguma ORDER desse cliente, previnir exclusão semelhante a como foi feito na inclusão
-        // if (Pedido::where('customer_id', '=', $id)->count()) {
-        //     return redirect()->route('cliente.listar')->with('message', 'É necessário excluir os pedidos desse cliente antes de excluí-lo!');
-        // }
+        if (Ordem::where('customer_id', '=', $id)->count()) {
+            return redirect()->route('cliente.listar')->with('message', 'É necessário excluir os pedidos desse cliente antes de excluí-lo!');
+        }
 
         $cliente = Cliente::find($id);
         $cliente->delete();
