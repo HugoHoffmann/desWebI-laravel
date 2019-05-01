@@ -1,0 +1,5 @@
+/* Previne que uma tabela com muito conteúdo quebre o estilo */
+td {
+    word-wrap:break-word;
+    word-break:break-all;
+}

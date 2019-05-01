@@ -27,16 +27,17 @@
             </header>
         </div>
     </div>
-    
-
     <section class="container">
         <div class="row">
-            @yield('conteudo')  
+            @if (session('message'))
+                <div class="col-12 alert alert-info">
+                    {{ session('message') }}
+                </div>
+            @endif
         </div>
+
+        @yield('conteudo')  
     </section>
-    
-    
-    
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
 </body>
