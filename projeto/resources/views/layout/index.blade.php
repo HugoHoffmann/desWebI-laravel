@@ -11,7 +11,7 @@
     <title>Des.Web </title>
 </head>
 <body>
-                
+    
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-light border-right pl-2 pt-2" id="sidebar-wrapper">
@@ -36,7 +36,15 @@
                     </div>
                 @endif
             </div>
-
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             @yield('conteudo')  
         </section>
     </div>
