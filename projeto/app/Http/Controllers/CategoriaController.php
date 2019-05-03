@@ -10,7 +10,6 @@ class CategoriaController extends Controller
 
     public function listar(){
         $categorias = Categoria::all();
-        //dd($categorias);
         return view('categoria.listar', compact('categorias'));        
     }
 
