@@ -45,8 +45,6 @@ class ClienteController extends Controller
         ]);
 
         $cliente = Cliente::findOrFail($id);
-
-        // $cliente->customer_id = $request->get('customer_id');
         $cliente->company_name = $request->get('company_name');
         $cliente->save();
 
@@ -54,11 +52,12 @@ class ClienteController extends Controller
     }
 
     public function excluir($id){
+        $cliente = Cliente::findOrFail($id);
+        
         if (Ordem::where('customer_id', '=', $id)->count()) {
             return redirect()->route('cliente.listar')->with('message', 'É necessário excluir os pedidos desse cliente antes de excluí-lo!');
         }
 
-        $cliente = Cliente::find($id);
         $cliente->delete();
 
         return redirect()->route('cliente.listar')->with('message', 'Cliente excluído com sucesso!');
