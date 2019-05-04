@@ -42,3 +42,29 @@ Route::get('/produto/{id}/alterar', 'ProdutoController@alterar')->name('produto.
 Route::patch('/produto/{id}/alterar', 'ProdutoController@atualizar')->name('produto.atualizar');
 
 Route::delete('/produto/{id}/excluir', 'ProdutoController@excluir')->name('produto.excluir');
+
+/**
+ * Order
+ */
+Route::get('/ordens', 'OrdemController@listar')->name('ordem.listar');
+
+Route::get('/ordem/incluir', 'OrdemController@incluir')->name('ordem.incluir');
+Route::post('/ordem/salvar', 'OrdemController@salvar')->name('ordem.salvar');
+
+Route::get('/ordem/{id}/alterar', 'OrdemController@alterar')->name('ordem.alterar');
+Route::patch('/ordem/{id}/alterar', 'OrdemController@atualizar')->name('ordem.atualizar');
+
+Route::delete('/ordem/{id}/excluir', 'OrdemController@excluir')->name('ordem.excluir');
+
+/**
+ * Order Details
+ */
+Route::get('/ordens-detalhes', 'OrdemDetalheController@listar')->name('ordem-detalhe.listar');
+
+Route::get('/ordem-detalhe/incluir', 'OrdemDetalheController@incluir')->name('ordem-detalhe.incluir');
+Route::post('/ordem-detalhe/salvar', 'OrdemDetalheController@salvar')->name('ordem-detalhe.salvar');
+
+Route::get('/ordem-detalhe/{id}/alterar', 'OrdemDetalheController@alterar')->name('ordem-detalhe.alterar');
+Route::patch('/ordem-detalhe/{id}/alterar', 'OrdemDetalheController@atualizar')->name('ordem-detalhe.atualizar');
+
+Route::delete('/ordem-detalhe/{id}/excluir', 'OrdemDetalheController@excluir')->name('ordem-detalhe.excluir');

@@ -18,6 +18,11 @@ class ClienteController extends Controller
     }
 
     public function salvar(Request $request) {
+        $validate = $request->validate([
+            'customer_id' => 'required',
+            'company_name' => 'required'
+        ]);
+
         if (Cliente::find($request->get('customer_id'))) {
             return redirect()->route('cliente.listar')->with('message', 'Já existe um cliente com esse ID!');
         }
@@ -29,15 +34,17 @@ class ClienteController extends Controller
     }
 
     public function alterar($id){
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::findOrFail($id);
 
         return view('cliente.alterar', compact('cliente'));
     }
 
     public function atualizar(Request $request, $id) {
-        $cliente = Cliente::find($id);
+        $validate = $request->validate([
+            'company_name' => 'required'
+        ]);
 
-        // $cliente->customer_id = $request->get('customer_id');
+        $cliente = Cliente::findOrFail($id);
         $cliente->company_name = $request->get('company_name');
         $cliente->save();
 
@@ -45,11 +52,12 @@ class ClienteController extends Controller
     }
 
     public function excluir($id){
+        $cliente = Cliente::findOrFail($id);
+        
         if (Ordem::where('customer_id', '=', $id)->count()) {
             return redirect()->route('cliente.listar')->with('message', 'É necessário excluir os pedidos desse cliente antes de excluí-lo!');
         }
 
-        $cliente = Cliente::find($id);
         $cliente->delete();
 
         return redirect()->route('cliente.listar')->with('message', 'Cliente excluído com sucesso!');

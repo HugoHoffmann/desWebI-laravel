@@ -11,23 +11,24 @@
     <title>Des.Web </title>
 </head>
 <body>
-                
+    
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading"><h2>Trabalho</h2></div>
+        <div class="bg-light border-right pl-2 pt-2" id="sidebar-wrapper">
+            <div class="sidebar-heading">
+                <h2>Trabalho</h2>
+            </div>
             <div class="list-group list-group-flush">
-            <a href="/clientes" class="list-group-item list-group-item-action bg-light">Clientes</a>
-            <a href="/categorias" class="list-group-item list-group-item-action bg-light">Categorias</a>
-                <a href="/ordem" class="list-group-item list-group-item-action bg-light">Ordem</a>
-                <a href="/produto" class="list-group-item list-group-item-action bg-light">Produto</a>
-                <a href="/ordemdetalhe" class="list-group-item list-group-item-action bg-light">Ordem Detalhe</a>
+                <a href="{{ route('cliente.listar') }}" class="list-group-item list-group-item-action bg-light">Clientes</a>
+                <a href="{{ route('categoria.listar') }}" class="list-group-item list-group-item-action bg-light">Categorias</a>
+                <a href="{{ route('ordem.listar') }}" class="list-group-item list-group-item-action bg-light">Ordem</a>
+                <a href="{{ route('produto.listar') }}" class="list-group-item list-group-item-action bg-light">Produto</a>
+                <a href="{{ route('ordem-detalhe.listar') }}" class="list-group-item list-group-item-action bg-light">Ordem Detalhe</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
-    
             
-        <section class="container-fluid">
+        <section class="container-fluid pt-2">
             <div class="row">
                 @if (session('message'))
                     <div class="col-12 alert alert-info">
@@ -35,7 +36,15 @@
                     </div>
                 @endif
             </div>
-
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             @yield('conteudo')  
         </section>
     </div>
