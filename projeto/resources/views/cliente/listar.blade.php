@@ -2,8 +2,8 @@
 
 @section('conteudo')
 <div class="row">
-    <div class="col-12 mb-3">
-        <a href="{{ route('cliente.incluir') }}" class="btn btn-primary">Incluir</a>
+    <div class="col-12 mb-3 mt-3">
+        <a href="{{ route('cliente.incluir') }}" class="btn btn-primary">Incluir Cliente</a>
     </div>
 </div>
 <div class="row">
