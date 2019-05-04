@@ -48,7 +48,7 @@ class OrdemController extends Controller
         ]);
 
         $ordem = Ordem::findOrFail($id);
-        $ordem->ship_name = $request-get('ship_name');
+        $ordem->ship_name = $request->get('ship_name');
 
         $ordem->save();
 
@@ -59,7 +59,7 @@ class OrdemController extends Controller
     public function excluir($id){
         $ordem = Ordem::findOrFail($id);
 
-        if (OrdemDetalhe::where('order_id', '==', $id)->count()){
+        if (OrdemDetalhe::where('order_id', '=', $id)->count()){
             return redirect()->route('ordem.listar')->with('message', 'É necessário excluir os produtos desse pedido antes de excluí-lo!');
         }
 
