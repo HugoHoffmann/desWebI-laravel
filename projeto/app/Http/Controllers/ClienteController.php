@@ -46,6 +46,15 @@ class ClienteController extends Controller
 
         $cliente = Cliente::findOrFail($id);
         $cliente->company_name = $request->get('company_name');
+        $cliente->contact_name = $request->get('contact_name');
+        $cliente->contact_title = $request->get('contact_title');
+        $cliente->address = $request->get('address');
+        $cliente->city = $request->get('city');
+        $cliente->region = $request->get('region');
+        $cliente->postal_code = $request->get('postal_code');
+        $cliente->country = $request->get('country');
+        $cliente->phone = $request->get('phone');
+        $cliente->fax = $request->get('fax');
         $cliente->save();
 
         return redirect()->route('cliente.listar')->with('message', 'Cliente atualizado com sucesso!');
