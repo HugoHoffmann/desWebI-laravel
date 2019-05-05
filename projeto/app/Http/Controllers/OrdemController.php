@@ -9,6 +9,7 @@ class OrdemController extends Controller
 {
     public function listar(){
         $ordens = Ordem::all();
+        dd($ordens);
 
         return view('ordem.listar', compact('ordens'));
     }
