@@ -11,7 +11,7 @@ class Ordem extends Model
     public $timestamps = false;
     public $incrementing = false;
 
-    protected $fillabre = [
+    protected $fillable = [
         'order_id',
         'customer_id',
         'employee_id',

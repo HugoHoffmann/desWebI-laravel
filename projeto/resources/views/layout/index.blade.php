@@ -23,7 +23,7 @@
                 <a href="{{ route('categoria.listar') }}" class="list-group-item list-group-item-action bg-light">Categorias</a>
                 <a href="{{ route('ordem.listar') }}" class="list-group-item list-group-item-action bg-light">Ordem</a>
                 <a href="{{ route('produto.listar') }}" class="list-group-item list-group-item-action bg-light">Produto</a>
-                <a href="{{ route('ordem-detalhe.listar') }}" class="list-group-item list-group-item-action bg-light">Ordem Detalhe</a>
+                {{-- <a href="{{ route('ordem-detalhe.listar') }}" class="list-group-item list-group-item-action bg-light">Ordem Detalhe</a> --}}
             </div>
         </div>
         <!-- /#sidebar-wrapper -->

@@ -23,4 +23,8 @@ class Produto extends Model
         'reorder_level',
         'discontinued',
     ];
+
+    public function categoria() {
+        return $this->belongsTo('projeto\Categoria', 'category_id', 'category_id');
+    }
 }
