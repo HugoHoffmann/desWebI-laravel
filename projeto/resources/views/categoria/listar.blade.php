@@ -13,15 +13,14 @@
                 <tr>
                     <th>Nome Categoria</th>
                     <th>Descricao</th>
-                    <th>Figura</th>
-                    
+                    {{-- <th>Figura</th> --}}
+                    <th>Ações</th>
                 </tr>
                 @foreach ($categorias as $categoria)
                     <tr>
                         <td>{{ $categoria->category_name }}</td>
                         <td>{{ $categoria->description }}</td>
-                        <td>imagem</td>
-                        
+                        {{-- <td>imagem</td> --}}
                         <td>
                             <a class="btn btn-primary mb-2" href="{{ route('categoria.alterar', $categoria->category_id) }}">Alterar</a>
                             <form action="{{ route('categoria.excluir', $categoria->category_id) }}" method="post">
