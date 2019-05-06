@@ -27,4 +27,8 @@ class Ordem extends Model
         'ship_postal_code',
         'ship_country'
     ];
+
+    public function cliente() {
+        return $this->belongsTo('projeto\Cliente', 'customer_id', 'customer_id');
+    }
 }
