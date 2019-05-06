@@ -3,19 +3,20 @@
 namespace projeto\Http\Controllers;
 
 use Illuminate\Http\Request;
-use projeto\{Ordem, OrdemDetalhe};
+use projeto\{Ordem, OrdemDetalhe, Cliente};
 
 class OrdemController extends Controller
 {
     public function listar(){
         $ordens = Ordem::all();
-        dd($ordens);
-
+        
         return view('ordem.listar', compact('ordens'));
     }
 
     public function incluir(){
-        return view('ordem.incluir');
+        $clientes = Cliente::orderBy('customer_id')->get();
+
+        return view('ordem.incluir', compact('clientes'));
     }
 
     public function salvar(Request $request){
@@ -39,8 +40,9 @@ class OrdemController extends Controller
 
     public function alterar($id){
         $ordem = Ordem::findOrFail($id);
+        $clientes = Cliente::orderBy('customer_id')->get();
 
-        return view('ordem.alterar', compact('ordem'));
+        return view('ordem.alterar', compact('ordem', 'clientes'));
     }
 
     public function atualizar(Request $request, $id){
